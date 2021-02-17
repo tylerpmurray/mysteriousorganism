@@ -63,4 +63,13 @@ console.log(test2.willLikelySurvive())
 
 
 
-
+const studyArray = [];
+let idCounter = 1;
+while(studyArray.length < 30){
+  let specimen = pAequorFactory(idCounter, mockUpStrand())
+  if(specimen.willLikelySurvive()){
+    studyArray.push(specimen);
+    idCounter ++;
+    }
+  }
+console.log(studyArray);
