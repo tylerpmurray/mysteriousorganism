@@ -34,6 +34,20 @@ const pAequorFactory = (specimenNum, dna) => {
       }
       let commonPercent = Math.round(commonCount/(this.dna.length) * 100);
       console.log(`Specimen ${this.specimenNum} and specimen ${pAequorObj.specimenNum} have ${commonPercent}% DNA in common`)
+    },
+    willLikelySurvive(){
+      let counter = 0;
+      for(let i = 0; i < this.dna.length; i++){
+        if(this.dna[i] === 'C' || this.dna[i] === 'G'){
+          counter += 1;
+        }
+      }
+      let survivePercent = counter/(this.dna.length) * 100;
+      if(survivePercent >= 60){
+        return true;
+      }else{
+        return false;
+      }
     }
   };
 }
@@ -44,7 +58,8 @@ let test2 = pAequorFactory(2, mockUpStrand());
 console.log(test1);
 console.log(test2);
 test1.compareDNA(test2);
-
+console.log(test1.willLikelySurvive())
+console.log(test2.willLikelySurvive())
 
 
 
