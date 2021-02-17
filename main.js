@@ -24,14 +24,26 @@ const pAequorFactory = (specimenNum, dna) => {
       }
       this.dna[randomIndex] = returnRandBase();
       return dna;
+    },
+    compareDNA(pAequorObj){
+      let commonCount = 0;
+      for(let i = 0; i < this.dna.length; i++){
+        if(this.dna[i] === pAequorObj.dna[i]){
+          commonCount = commonCount + 1;
+        }
+      }
+      let commonPercent = Math.round(commonCount/(this.dna.length) * 100);
+      console.log(`Specimen ${this.specimenNum} and specimen ${pAequorObj.specimenNum} have ${commonPercent}% DNA in common`)
     }
   };
 }
 
 let test1 = pAequorFactory(1, mockUpStrand());
+let test2 = pAequorFactory(2, mockUpStrand());
 
 console.log(test1);
-console.log(test1.mutate());
+console.log(test2);
+test1.compareDNA(test2);
 
 
 
